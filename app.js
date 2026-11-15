@@ -558,7 +558,7 @@ if (gallery) {
   /* Inclinación según el mouse (solo con mouse y sin "reducir movimiento") */
   if (!matchMedia("(hover: hover) and (pointer: fine)").matches) return;
   if (matchMedia("(prefers-reduced-motion: reduce)").matches && !/[?&]animaciones/.test(location.search)) return;
-  document.querySelectorAll(".tile, .install, .trust__panel, .how__stage, .mascot__stage").forEach(function (el) {
+  document.querySelectorAll(".tile, .install, .trust__panel, .how__stage, .mascot__stage, .polaroid, .logo-sticker").forEach(function (el) {
     var max = el.classList.contains("tile") ? 9 : 5;
     el.addEventListener("pointermove", function (e) {
       var r = el.getBoundingClientRect();
