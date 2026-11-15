@@ -146,6 +146,15 @@
           <p class="hud" aria-hidden="true"><b id="hud-state">No se detecta rostro</b><span>Ilustración del
               escaneo</span></p>
         </div>
+        <div class="stamp" aria-hidden="true">
+          <svg viewBox="0 0 200 200" focusable="false">
+            <defs><path id="stamp-path" d="M100,100 m-73,0 a73,73 0 1,1 146,0 a73,73 0 1,1 -146,0" /></defs>
+            <circle cx="100" cy="100" r="96" class="stamp__disc" />
+            <g class="stamp__ring"><text><textPath href="#stamp-path" textLength="448" lengthAdjust="spacing">INSTITUTO TECNOLÓGICO AYACUCHO • LA PAZ, BOLIVIA • </textPath></text></g>
+            <circle cx="100" cy="100" r="53" class="stamp__core" />
+            <image href="img/mascota.png" x="64" y="72" width="72" height="57" />
+          </svg>
+        </div>
       </div>
     </section>
 
@@ -409,6 +418,53 @@
             preload="metadata"
             aria-label="Animación de la mascota de Visiónica saludando con una pluma al aire"></video>
           <button class="sound" id="sound" type="button" aria-pressed="false">Activar sonido</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ INSTITUCIÓN ============ -->
+    <section class="section inst" id="institucion">
+      <div class="wrap inst__grid">
+        <div class="inst__text">
+          <h2>Hecho en La Paz, Bolivia</h2>
+          <p class="section-lead">Visiónica es el proyecto de grado de la Carrera de Sistemas Informáticos del Instituto
+            Tecnológico Ayacucho.</p>
+          <ul class="chips" aria-label="Datos del proyecto">
+            <li>La Paz, Bolivia</li>
+            <li>Gestión 2026</li>
+            <li>Técnico Superior en Sistemas Informáticos</li>
+          </ul>
+          <p class="inst__hint">Toca la credencial para darle la vuelta.</p>
+        </div>
+        <div class="inst__stage">
+          <div class="credential" id="credential" role="button" tabindex="0" aria-pressed="false"
+            aria-label="Credencial del proyecto. Actívala para ver el reverso con los datos">
+            <div class="credential__inner">
+              <div class="credential__face credential__front">
+                <div class="cred__top"><span class="cred__slot"></span>
+                  <p class="cred__kind">Credencial del proyecto</p>
+                </div>
+                <div class="cred__photo">
+                  <img src="img/mascota.png" alt="" width="264" height="209">
+                  <i></i><i></i><i></i><i></i>
+                </div>
+                <p class="cred__name">Visiónica</p>
+                <p class="cred__tag">Control de asistencia inteligente</p>
+                <p class="cred__school">Instituto Tecnológico Ayacucho<br>La Paz, Bolivia</p>
+                <div class="cred__check" aria-hidden="true"></div>
+              </div>
+              <div class="credential__face credential__back">
+                <p class="cred__kind">Datos del proyecto</p>
+                <dl>
+                  <div><dt>Institución</dt><dd>Instituto Tecnológico Ayacucho</dd></div>
+                  <div><dt>Ciudad</dt><dd>La Paz, Bolivia</dd></div>
+                  <div><dt>Carrera</dt><dd>Sistemas Informáticos</dd></div>
+                  <div><dt>Postulante</dt><dd>Aracely Edith Alanoca Limachi</dd></div>
+                  <div><dt>Tutor</dt><dd>Lic. Luis Rodrigo Gutiérrez Miranda</dd></div>
+                </dl>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -542,3 +542,31 @@ if (gallery) {
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") set(false); });
   addEventListener("resize", () => { if (innerWidth > 900) set(false); });
 })();
+
+
+/* ---------- Extras 3D: credencial que se voltea e inclinación de tarjetas ---------- */
+(function () {
+  var cred = document.getElementById("credential");
+  if (cred) {
+    var flip = function () { cred.setAttribute("aria-pressed", cred.getAttribute("aria-pressed") === "true" ? "false" : "true"); };
+    cred.addEventListener("click", flip);
+    cred.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); flip(); }
+    });
+  }
+
+  /* Inclinación según el mouse (solo con mouse y sin "reducir movimiento") */
+  if (!matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches && !/[?&]animaciones/.test(location.search)) return;
+  document.querySelectorAll(".tile, .install, .trust__panel, .how__stage, .mascot__stage").forEach(function (el) {
+    var max = el.classList.contains("tile") ? 9 : 5;
+    el.addEventListener("pointermove", function (e) {
+      var r = el.getBoundingClientRect();
+      var px = (e.clientX - r.left) / r.width - 0.5, py = (e.clientY - r.top) / r.height - 0.5;
+      var m = Math.min(1, Math.hypot(px, py) * 2);
+      if (m < 0.001) return;
+      el.style.rotate = (-py) + " " + px + " 0 " + (m * max).toFixed(2) + "deg";
+    });
+    el.addEventListener("pointerleave", function () { el.style.rotate = ""; });
+  });
+})();
