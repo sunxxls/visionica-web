@@ -7,7 +7,7 @@
    Es el link del archivo dentro de tu Release en GitHub, por ejemplo:
    https://github.com/TU_USUARIO/visionica/releases/download/v1.0/visionica.apk
    --------------------------------------------------------- */
-const DOWNLOAD_URL = "https://github.com/cookys97/Visionica";
+const DOWNLOAD_URL = "https://github.com/sunxxls/Visionica#%EF%B8%8F-visionica";
 
 const downloadReady = !DOWNLOAD_URL.includes("TU_USUARIO");
 
