@@ -1,127 +1,149 @@
 /* =========================================================
    VISIÓNICA · tema "sticker lila"
-   Estilo manga/retro: contornos gruesos, sombras duras, tablero
-   de ajedrez y trama de puntos. La tinta es violeta oscuro en
-   vez de negro. Se carga DESPUÉS de style.css.
+   Se carga DESPUÉS de style.css. Cambia la paleta durazno/menta
+   por tonos lila y añade el estilo manga/retro: letras con
+   contorno, tablero de ajedrez, trama de puntos y sombras duras.
+   La "tinta" es violeta muy oscuro en lugar de negro.
    ========================================================= */
 :root {
-  --ink: #2A1450;
-  --paper: #FAF6FF;
-  --bg: #F3EAFD; --bg-1: #FAF6FF; --bg-2: #E6D5F9; --bg-3: #D2B6F2;
-  --card: #FFFFFF; --edge: var(--ink);
-  --fg: var(--ink); --fg-soft: #4E2A7A; --line: var(--ink); --focus: var(--l-700);
+  --ink: #2A1450;       /* tinta (reemplaza al negro) */
+  --paper: #FAF6FF;     /* papel lila casi blanco */
+  --cream: #F3EAFD;
+  --lilac: #D2B6F2;     /* lila medio */
+  --peach: #EADBFB;     /* lila muy claro (antes durazno) */
+  --mint: #C3A8F0;      /* lila vivo (antes menta) */
+  --violet: #7B46E0;    /* violeta principal */
+  --orchid: #B58CFF;
   --font-sticker: "Bagel Fat One", "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
   --check: repeating-conic-gradient(var(--ink) 0 25%, var(--paper) 0 50%);
-  --dots: radial-gradient(var(--l-300) 1.5px, transparent 1.8px);
-  color-scheme: light;
+  --dots: radial-gradient(#DCC8F6 2px, transparent 2.4px);
 }
-body { background: var(--bg); color: var(--ink); }
+body { background: var(--dots) 0 0 / 22px 22px, var(--paper); }
 
-/* ---------- Títulos tipo sticker ---------- */
-h2, .brand span, .footer__name {
-  font-family: var(--font-sticker); font-weight: 400; letter-spacing: .01em;
-}
-h2 { font-size: clamp(1.8rem, 3.8vw, 2.7rem); line-height: 1.08; color: var(--ink); text-shadow: 3px 3px 0 var(--l-300); }
-.hero__text h1, .gallery__head h2 { color: var(--ink); }
-.hero__brand, .hero__brand .w {
+/* ---------- Números y subrayados de los títulos: fuera ---------- */
+.section h2::before, .section h2::after { display: none !important; }
+
+/* ---------- Letras tipo sticker ---------- */
+.section h2, .brand span, .footer__name {
   font-family: var(--font-sticker); font-weight: 400;
-  background: none !important; color: var(--paper) !important;
-  -webkit-text-fill-color: var(--paper) !important;
-  -webkit-text-stroke: 4px var(--ink); paint-order: stroke fill;
-  text-shadow: 6px 6px 0 var(--ink);
+  letter-spacing: .015em; word-spacing: .08em;
 }
-.hero__claim { color: var(--ink); }
-.section-lead, .get__warn { color: var(--fg-soft); }
-
-/* ---------- Fondos: trama de puntos y bandas ---------- */
-.hero, #pantallas { background: var(--dots) 0 0 / 18px 18px, var(--paper); position: relative; }
-.s-100, .s-200 { background: var(--bg); }
-.s-300 { background: var(--dots) 0 0 / 18px 18px, var(--paper); }
-#como-funciona { background: var(--bg-2); }
-.hero::before, #pantallas::before {
-  content: "✦"; position: absolute; right: 6%; top: 9%; font-size: clamp(3rem, 8vw, 6rem);
-  color: var(--l-300); -webkit-text-stroke: 3px var(--ink); paint-order: stroke fill;
-  rotate: 12deg; pointer-events: none; z-index: 0;
+.section h2 {
+  font-size: clamp(2rem, 4.4vw, 3.2rem); line-height: 1.1; color: var(--ink);
+  text-shadow: 3px 3px 0 var(--lilac);
 }
-#pantallas::before { right: auto; left: 3%; top: 4%; font-size: clamp(2rem, 5vw, 3.6rem); rotate: -10deg; }
-.hero > .wrap, #pantallas > .wrap { position: relative; z-index: 1; }
+.brand span { font-size: 1.5rem; color: var(--ink); }
+.hero__brand, .hero__brand .w, .hero__text h1 .w {
+  font-family: var(--font-sticker); font-weight: 400; letter-spacing: .01em;
+  background: none !important; background-image: none !important;
+  color: var(--paper) !important; -webkit-text-fill-color: var(--paper) !important;
+  -webkit-text-stroke: 4px var(--ink); paint-order: stroke fill; text-shadow: 6px 6px 0 var(--ink);
+}
+.hero__claim, .hero__claim .w {
+  color: var(--ink) !important; -webkit-text-fill-color: var(--ink) !important;
+  background: none !important; background-image: none !important;
+}
+.hero .lead, .hero p { color: var(--ink); }
+.section-lead { color: #4A2D7A; }
 
-#privacidad, .site-footer {
-  --fg: var(--paper); --fg-soft: #E6D5F9; color: var(--paper);
-  background: var(--check) 0 0 / 28px 28px repeat-x, var(--ink) !important;
+/* ---------- Fondos de sección: todo en lila ---------- */
+.hero { background: var(--dots) 0 0 / 22px 22px, var(--paper); position: relative; }
+.hero::before {
+  display: block; content: "✦"; position: absolute; right: 5%; top: 6%; z-index: 0;
+  width: auto; height: auto; background: none; filter: none; border-radius: 0;
+  font-size: clamp(3rem, 7vw, 5.5rem); line-height: 1; color: var(--lilac);
+  -webkit-text-stroke: 3px var(--ink); paint-order: stroke fill; rotate: 12deg; pointer-events: none;
+}
+.hero > .wrap { position: relative; z-index: 1; }
+section#pantallas { background: var(--dots) 0 0 / 22px 22px, var(--lilac); border-block: 4px solid var(--ink); }
+section#incluye { background: var(--peach); border-block: 4px solid var(--ink); }
+section#como-funciona, .theme-cream {
+  background: var(--cream); color: var(--ink);
+}
+section#privacidad {
+  background: var(--check) 0 0 / 28px 28px repeat-x, var(--mint); border-block: 4px solid var(--ink);
   padding-top: calc(clamp(4.5rem, 9vw, 7.5rem) + 14px);
 }
-#privacidad h2, .site-footer h2 { color: var(--paper); text-shadow: 3px 3px 0 var(--l-700); }
-.site-footer { padding-bottom: 2rem; }
-#descarga {
-  background: var(--check) 0 0 / 28px 28px repeat-x, var(--l-300) !important;
-  padding-top: calc(clamp(4.5rem, 9vw, 7.5rem) + 14px);
+section#privacidad::before { display: none; }
+section#mascota { background: var(--dots) 0 0 / 22px 22px, var(--paper); }
+section#descarga {
+  background: var(--check) 0 0 / 28px 28px repeat-x, var(--violet);
+  border-top: 4px solid var(--ink); padding-top: calc(clamp(4.5rem, 9vw, 7.5rem) + 14px);
 }
-#descarga h2 { text-shadow: 3px 3px 0 var(--paper); }
-.install p { color: var(--ink); }
-.ticker-wrap { background: var(--ink); border-block: 3px solid var(--ink); color: var(--paper); }
-.ticker-wrap span { color: var(--paper); }
+section#descarga h2, #descarga .hero__brand {
+  color: var(--paper); text-shadow: 4px 4px 0 var(--ink);
+  -webkit-text-stroke: 3px var(--ink); paint-order: stroke fill;
+}
+section#descarga .section-lead, section#descarga .get__warn { color: #fff; }
+#descarga .install { background: var(--paper); border: 4px solid var(--ink); box-shadow: 9px 9px 0 var(--ink); border-radius: 1.6rem; }
+#descarga .install p { color: var(--ink); }
+#descarga .install__num { background: var(--lilac); color: var(--ink); border: 3px solid var(--ink); box-shadow: 2px 2px 0 var(--ink); }
+#descarga .btn--big { background: var(--paper); box-shadow: 6px 6px 0 var(--ink); animation: none; }
+#descarga .btn--big:hover { background: #fff; }
+
+/* ---------- Cinta de palabras ---------- */
+.ticker-wrap { background: transparent; }
+.ticker { background: var(--lilac); color: var(--ink); border-block: 4px solid var(--ink); box-shadow: none; }
 
 /* ---------- Encabezado ---------- */
-.site-header, .site-header.is-scrolled {
-  background: var(--paper); border-bottom: 4px solid var(--ink); box-shadow: 0 6px 0 var(--l-300);
-}
-.brand { color: var(--ink); }
-.brand span { font-size: 1.45rem; color: var(--ink); }
-.site-nav { background: var(--paper); }
-.site-nav a { color: var(--ink); font-weight: 700; border-radius: 999px; border: 2px solid transparent; }
-.site-nav a:hover, .site-nav a.is-current { color: var(--ink); background: var(--l-200); border-color: var(--ink); }
-.menu-toggle { border-color: var(--ink); }
-.menu-toggle span { background: var(--ink); }
+.site-header, .site-header.is-scrolled { background: var(--paper); border: 3px solid var(--ink); box-shadow: 5px 5px 0 var(--lilac), 5px 5px 0 3px var(--ink); }
+.site-nav a.is-current, .site-nav a:hover { color: var(--violet); }
+.menu-toggle { background: var(--lilac); }
 
-/* ---------- Botones ---------- */
-.btn {
-  border: 3px solid var(--ink); color: var(--ink); font-weight: 800;
-  box-shadow: 5px 5px 0 var(--ink); transition: translate .15s, box-shadow .15s, background-color .15s;
-}
-.btn--primary { background: var(--l-400); }
-.btn--primary:hover { background: var(--l-300); }
-.btn--ghost { background: var(--paper); color: var(--ink); border-color: var(--ink); }
-.btn--ghost:hover { background: var(--l-100); border-color: var(--ink); }
-.btn--light { background: var(--paper); }
-.btn--light:hover { background: #fff; }
-.btn:hover { translate: 2px 2px; box-shadow: 3px 3px 0 var(--ink); }
-.btn:active { translate: 5px 5px; box-shadow: 0 0 0 var(--ink); }
-.btn--big { animation: none; }
-.round { background: var(--paper); color: var(--ink); border: 3px solid var(--ink); box-shadow: 3px 3px 0 var(--ink); }
-.round:hover { background: var(--l-400); color: var(--ink); }
+/* ---------- Botones, etiquetas, pasos y tarjetas ---------- */
+.btn--primary { background: var(--lilac); }
+.btn--primary:hover { background: var(--orchid); }
+.chips li:last-child { background: var(--lilac); }
+.chip--accent { background: var(--lilac); }
+.tile--code { background: var(--lilac); }
+.tile--excel { background: var(--mint); }
+.tile--calendar { background: var(--paper); }
+.tile--history { background: var(--violet); }
+.step.is-active { background: var(--lilac); }
+.theme-cream .step.is-active, .theme-cream .step[aria-current="true"] { background: var(--lilac); box-shadow: 6px 6px 0 var(--ink); }
+.theme-cream .step { box-shadow: 4px 4px 0 var(--ink); }
+.theme-cream .step__num { background: var(--paper); box-shadow: none; }
+.theme-cream .step.is-active .step__num { background: var(--ink); color: var(--paper); }
+.how__stage, .trust__panel { box-shadow: 8px 8px 0 var(--violet), 8px 8px 0 3px var(--ink); }
+.theme-cream .trust__panel { background: var(--ink); }
 
-/* ---------- Etiquetas, pasos y tarjetas ---------- */
-.chips li {
-  background: var(--paper) !important; color: var(--ink) !important;
-  border: 2.5px solid var(--ink); box-shadow: 3px 3px 0 var(--ink); font-weight: 700;
+/* ---------- Galería de pantallas ---------- */
+.gallery figcaption {
+  position: relative; z-index: 5; width: fit-content; margin: 1.6rem auto 0; padding: .3rem .9rem;
+  background: var(--paper); border: 2.5px solid var(--ink); border-radius: 999px;
+  box-shadow: 3px 3px 0 var(--ink); color: var(--ink); font-weight: 800; font-size: .95rem;
 }
-.chips li:nth-child(2) { background: var(--l-200) !important; }
-.chips li:nth-child(3) { background: var(--l-400) !important; }
-.step { background: var(--paper); color: var(--ink); border: 3px solid var(--ink); box-shadow: 4px 4px 0 var(--ink); }
-.step:hover { border-color: var(--ink); }
-.step.is-active { background: var(--l-200); border-color: var(--ink); }
-.step__num { border: 2.5px solid var(--ink); background: var(--l-200); color: var(--ink); }
-.step.is-active .step__num { background: var(--l-500); color: var(--paper); }
-.step__text, .step__title { color: var(--ink); }
-.tile { border: 3px solid var(--ink); box-shadow: 7px 7px 0 var(--ink); }
-.pill { border: 2px solid var(--ink); }
-.gallery figcaption, .gallery figure:hover figcaption { color: var(--ink); font-weight: 700; }
-.bar dt { color: var(--paper); }
+.phone { border-color: var(--ink); background: var(--ink); box-shadow: 8px 8px 0 rgba(42, 20, 80, .9); }
 
-/* ---------- Teléfonos, escenario y video ---------- */
-.phone, .stage .phone { border: 3px solid var(--ink); box-shadow: 6px 6px 0 var(--ink); }
-.hero__stage::before {
-  background: linear-gradient(160deg, var(--l-700), var(--l-950));
-  border: 4px solid var(--ink); border-radius: 30px; box-shadow: 9px 9px 0 var(--ink);
+/* ---------- Escenario, mascota y video ---------- */
+.hero__stage { box-shadow: 10px 10px 0 var(--violet), 10px 10px 0 3px var(--ink); }
+.mascot__stage { background: var(--lilac); box-shadow: 10px 10px 0 var(--ink); }
+.sound { background: var(--ink); color: var(--paper); }
+
+/* ---------- Pie de página ---------- */
+.site-footer {
+  background: var(--check) 0 0 / 28px 28px repeat-x, var(--ink);
+  padding-top: calc(3rem + 14px); border-top: 0;
 }
-.hud, .hud b { color: var(--paper); }
-.mascot__stage video { border: 4px solid var(--ink) !important; border-radius: 26px; box-shadow: 8px 8px 0 var(--ink); background: var(--l-200) !important; }
-.sound { background: var(--paper); color: var(--ink); border: 3px solid var(--ink); box-shadow: 3px 3px 0 var(--ink); }
-.footer__tag, .credits dt { color: var(--l-300); }
-.credits dd, .footer__name { color: var(--paper); }
+.footer__name { color: var(--paper); font-size: 2rem; }
+.site-footer .footer__tag, .site-footer dt { color: var(--lilac); }
 
 @media (max-width: 720px) {
   .hero__brand, .hero__brand .w { -webkit-text-stroke-width: 3px; text-shadow: 4px 4px 0 var(--ink); }
-  .btn { box-shadow: 4px 4px 0 var(--ink); }
+  .hero::before { font-size: 2.6rem; top: 1%; }
 }
+
+/* ---------- Detalles finales ---------- */
+.get__main h2 { max-width: none; margin-bottom: .4rem; }
+.pill { border: 2.5px solid var(--ink); box-shadow: 3px 3px 0 var(--ink); }
+.pill--1 { background: var(--violet); color: #fff; }
+.pill--2 { background: var(--lilac); color: var(--ink); box-shadow: 3px 3px 0 var(--ink); }
+.pill--3 { background: var(--peach); color: var(--ink); box-shadow: 3px 3px 0 var(--ink); }
+.pill--4 { background: var(--paper); color: var(--ink); box-shadow: 3px 3px 0 var(--ink); }
+section#privacidad .trust__col p, section#privacidad .section-lead { color: var(--ink); }
+.hero__text h1 .hero__claim, .hero__text h1 .hero__claim .w {
+  font-family: var(--font-display); font-weight: 800; letter-spacing: -.02em;
+  color: var(--ink) !important; -webkit-text-fill-color: var(--ink) !important;
+  -webkit-text-stroke: 0; text-shadow: none; paint-order: normal;
+}
+.hero::before { right: 47%; top: 3%; }
